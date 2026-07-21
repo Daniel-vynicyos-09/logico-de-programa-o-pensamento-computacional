@@ -21,9 +21,8 @@ int main() {
 
     return 0;
 }
-
-
-Aí entra o if-else, que aparece no seu cronograma em 24/07:
+_________________________________________________________
+Aí entra o if-else,
 A lógica é:
 
 SE média >= 6
