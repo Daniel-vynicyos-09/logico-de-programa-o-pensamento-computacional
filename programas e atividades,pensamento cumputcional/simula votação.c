@@ -1,68 +1,82 @@
-# Cadastro dos candidatos
-nome1 = input("Digite o nome do primeiro candidato: ")
-codigo1 = int(input(f"Digite o número de {nome1}: "))
+#include <stdio.h>
+#include <string.h>
 
-nome2 = input("Digite o nome do segundo candidato: ")
-codigo2 = int(input(f"Digite o número de {nome2}: "))
+int main() {
+    char nome1[50], nome2[50];
+    int codigo1, codigo2;
+    int votos1 = 0, votos2 = 0, brancos = 0, nulos = 0;
+    int voto;
 
-# Coloca os candidatos em ordem alfabética
-if nome1.lower() < nome2.lower():
-    candidatos = [(nome1, codigo1), (nome2, codigo2)]
-else:
-    candidatos = [(nome2, codigo2), (nome1, codigo1)]
+    // Cadastro dos candidatos
+    printf("Digite o nome do primeiro candidato: ");
+    scanf(" %49[^\n]", nome1);
 
-# Contadores
-votos1 = 0
-votos2 = 0
-brancos = 0
-nulos = 0
+    printf("Digite o numero de %s: ", nome1);
+    scanf("%d", &codigo1);
 
-# Votação
-while True:
-    print("\n------------------------------")
-    print("Menu:")
+    printf("Digite o nome do segundo candidato: ");
+    scanf(" %49[^\n]", nome2);
 
-    for nome, codigo in candidatos:
-        print(f"Voto em {nome}: {codigo}")
+    printf("Digite o numero de %s: ", nome2);
+    scanf("%d", &codigo2);
 
-    print("Voto em Branco: 0")
-    print("Encerrar votação: -1 (ou qualquer valor negativo)")
-    voto = int(input("Digite sua opção: "))
+    // Votação
+    do {
+        printf("\n-----------------------------\n");
 
-    if voto < 0:
-        break
-    elif voto == 0:
-        brancos += 1
-    elif voto == codigo1:
-        votos1 += 1
-    elif voto == codigo2:
-        votos2 += 1
-    else:
-        nulos += 1
+        // Menu em ordem alfabética
+        if (strcmp(nome1, nome2) < 0) {
+            printf("Voto em %s: %d\n", nome1, codigo1);
+            printf("Voto em %s: %d\n", nome2, codigo2);
+        } else {
+            printf("Voto em %s: %d\n", nome2, codigo2);
+            printf("Voto em %s: %d\n", nome1, codigo1);
+        }
 
-# Total de votos
-total = votos1 + votos2 + brancos + nulos
+        printf("Voto em Branco: 0\n");
+        printf("Encerrar votacao: -1 (ou qualquer valor negativo)\n");
+        printf("Digite sua opcao: ");
+        scanf("%d", &voto);
 
-# Percentuais
-if total > 0:
-    perc_brancos = (brancos / total) * 100
-    perc_nulos = (nulos / total) * 100
-else:
-    perc_brancos = 0
-    perc_nulos = 0
+        if (voto < 0)
+            break;
+        else if (voto == 0)
+            brancos++;
+        else if (voto == codigo1)
+            votos1++;
+        else if (voto == codigo2)
+            votos2++;
+        else
+            nulos++;
 
-# Resultado
-print("\n========== RESULTADO ==========")
-print(f"Total geral de votos: {total}")
+    } while (1);
 
-# Exibe os candidatos em ordem alfabética
-for nome, codigo in candidatos:
-    if codigo == codigo1:
-        print(f"Votos para {nome}: {votos1}")
-    else:
-        print(f"Votos para {nome}: {votos2}")
+    int total = votos1 + votos2 + brancos + nulos;
 
-print(f"Votos em branco: {brancos}")
-print(f"Votos nulos: {nulos}")
-print(f"Percentual de votos em branco: {perc_brancos:.2f}%")
-print(f"Percentual de votos nulos: {perc_nulos:.2f}%")
+    float percBrancos = 0;
+    float percNulos = 0;
+
+    if (total > 0) {
+        percBrancos = (float) brancos * 100 / total;
+        percNulos = (float) nulos * 100 / total;
+    }
+
+    printf("\n========== RESULTADO ==========\n");
+    printf("Total geral de votos: %d\n", total);
+
+    // Resultado em ordem alfabética
+    if (strcmp(nome1, nome2) < 0) {
+        printf("%s: %d votos\n", nome1, votos1);
+        printf("%s: %d votos\n", nome2, votos2);
+    } else {
+        printf("%s: %d votos\n", nome2, votos2);
+        printf("%s: %d votos\n", nome1, votos1);
+    }
+
+    printf("Votos em branco: %d\n", brancos);
+    printf("Votos nulos: %d\n", nulos);
+    printf("Percentual de votos em branco: %.2f%%\n", percBrancos);
+    printf("Percentual de votos nulos: %.2f%%\n", percNulos);
+
+    return 0;
+}
