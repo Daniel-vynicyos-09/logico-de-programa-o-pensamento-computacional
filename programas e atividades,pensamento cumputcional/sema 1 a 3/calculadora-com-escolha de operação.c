@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int main() {
+    int opcao;
+    float a, b;
+
+    printf("Digite o primeiro numero: ");
+    scanf("%f", &a);
+
+    printf("Digite o segundo numero: ");
+    scanf("%f", &b);
+
+    printf("\n1 - Soma\n");
+    printf("2 - Subtracao\n");
+    printf("3 - Multiplicacao\n");
+    printf("4 - Divisao\n");
+
+    printf("Escolha uma opcao: ");
+    scanf("%d", &opcao);
+
+    switch (opcao) {
+        case 1:
+            printf("Resultado: %.2f\n", a + b);
+            break;
+
+        case 2:
+            printf("Resultado: %.2f\n", a - b);
+            break;
+
+        case 3:
+            printf("Resultado: %.2f\n", a * b);
+            break;
+
+        case 4:
+            printf("Resultado: %.2f\n", a / b);
+            break;
+
+        default:
+            printf("Opcao invalida!\n");
+    }
+
+    return 0;
+}
