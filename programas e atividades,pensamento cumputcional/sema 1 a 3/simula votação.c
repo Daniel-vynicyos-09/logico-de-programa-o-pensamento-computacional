@@ -1,68 +1,120 @@
-# Cadastro dos candidatos
-nome1 = input("Digite o nome do primeiro candidato: ")
-codigo1 = int(input(f"Digite o número de {nome1}: "))
+#include <stdio.h>
+#include <string.h>
 
-nome2 = input("Digite o nome do segundo candidato: ")
-codigo2 = int(input(f"Digite o número de {nome2}: "))
+int main() {
+    // Cadastro dos candidatos
+    char nome1[50];
+    char nome2[50];
 
-# Coloca os candidatos em ordem alfabética
-if nome1.lower() < nome2.lower():
-    candidatos = [(nome1, codigo1), (nome2, codigo2)]
-else:
-    candidatos = [(nome2, codigo2), (nome1, codigo1)]
+    int codigo1;
+    int codigo2;
 
-# Contadores
-votos1 = 0
-votos2 = 0
-brancos = 0
-nulos = 0
+    printf("Digite o nome do primeiro candidato: ");
+    fgets(nome1, 50, stdin);
 
-# Votação
-while True:
-    print("\n------------------------------")
-    print("Menu:")
+    // Remove o ENTER (\n) que o fgets guarda
+    nome1[strcspn(nome1, "\n")] = '\0';
 
-    for nome, codigo in candidatos:
-        print(f"Voto em {nome}: {codigo}")
+    printf("Digite o número de %s: ", nome1);
+    scanf("%d", &codigo1);
 
-    print("Voto em Branco: 0")
-    print("Encerrar votação: -1 (ou qualquer valor negativo)")
-    voto = int(input("Digite sua opção: "))
+    // Limpa o ENTER que ficou no teclado
+    getchar();
 
-    if voto < 0:
-        break
-    elif voto == 0:
-        brancos += 1
-    elif voto == codigo1:
-        votos1 += 1
-    elif voto == codigo2:
-        votos2 += 1
-    else:
-        nulos += 1
+    printf("\nDigite o nome do segundo candidato: ");
+    fgets(nome2, 50, stdin);
 
-# Total de votos
-total = votos1 + votos2 + brancos + nulos
+    // Remove o ENTER
+    nome2[strcspn(nome2, "\n")] = '\0';
 
-# Percentuais
-if total > 0:
-    perc_brancos = (brancos / total) * 100
-    perc_nulos = (nulos / total) * 100
-else:
-    perc_brancos = 0
-    perc_nulos = 0
+    printf("Digite o número de %s: ", nome2);
+    scanf("%d", &codigo2);
 
-# Resultado
-print("\n========== RESULTADO ==========")
-print(f"Total geral de votos: {total}")
 
-# Exibe os candidatos em ordem alfabética
-for nome, codigo in candidatos:
-    if codigo == codigo1:
-        print(f"Votos para {nome}: {votos1}")
-    else:
-        print(f"Votos para {nome}: {votos2}")
+    // Contadores de votos
+    int votos1 = 0;
+    int votos2 = 0;
+    int brancos = 0;
+    int nulos = 0;
 
-print(f"Votos em branco: {brancos}")
-print(f"Votos nulos: {nulos}")
-print(f"Percentual de votos em branco: {perc_brancos:.2f}%")
-print(f"Percentual de votos nulos: {perc_nulos:.2f}%")
+    int voto;
+
+
+    // Votação
+    while (1) {
+
+        printf("\n------------------------------\n");
+        printf("MENU:\n");
+
+        printf("Voto em %s: %d\n", nome1, codigo1);
+        printf("Voto em %s: %d\n", nome2, codigo2);
+
+        printf("Voto em Branco: 0\n");
+        printf("Encerrar votação: -1 ou qualquer valor negativo\n");
+
+        printf("\nDigite sua opção: ");
+        scanf("%d", &voto);
+
+
+        // Encerra a votação
+        if (voto < 0) {
+            break;
+        }
+
+        // Voto em branco
+        else if (voto == 0) {
+            brancos++;
+        }
+
+        // Voto no candidato 1
+        else if (voto == codigo1) {
+            votos1++;
+        }
+
+        // Voto no candidato 2
+        else if (voto == codigo2) {
+            votos2++;
+        }
+
+        // Qualquer outro número é voto nulo
+        else {
+            nulos++;
+        }
+    }
+
+
+    // Total de votos
+    int total = votos1 + votos2 + brancos + nulos;
+
+
+    // Percentuais
+    float perc_brancos;
+    float perc_nulos;
+
+    if (total > 0) {
+        perc_brancos = ((float) brancos / total) * 100;
+        perc_nulos = ((float) nulos / total) * 100;
+    }
+    else {
+        perc_brancos = 0;
+        perc_nulos = 0;
+    }
+
+
+    // Resultado
+    printf("\n========== RESULTADO ==========\n");
+
+    printf("Total geral de votos: %d\n", total);
+
+    printf("Votos para %s: %d\n", nome1, votos1);
+    printf("Votos para %s: %d\n", nome2, votos2);
+
+    printf("Votos em branco: %d\n", brancos);
+    printf("Votos nulos: %d\n", nulos);
+
+    printf("Percentual de votos em branco: %.2f%%\n", perc_brancos);
+    printf("Percentual de votos nulos: %.2f%%\n", perc_nulos);
+
+
+    return 0;
+}
