@@ -1,0 +1,1337 @@
+# RESUMO DE C — LÓGICA E ESTRUTURA BÁSICA
+
+# 1. ESTRUTURA BÁSICA DO C
+
+Todo programa básico em C geralmente começa assim:
+
+```c
+#include <stdio.h>
+
+int main() {
+
+    // código do programa
+
+    return 0;
+}
+```
+
+## O que significa cada parte?
+
+### `#include <stdio.h>`
+
+Inclui uma biblioteca que permite usar funções como:
+
+```c
+printf()
+scanf()
+```
+
+### `int main()`
+
+É a função principal do programa.
+
+O programa começa a ser executado dentro dela.
+
+### `{ }`
+
+São as chaves.
+
+Elas delimitam um bloco de código.
+
+### `return 0;`
+
+Indica que o programa terminou corretamente.
+
+### `;`
+
+Indica o fim de uma instrução.
+
+Exemplo:
+
+```c
+int idade;
+printf("Ola");
+```
+
+---
+
+# 2. VARIÁVEIS
+
+Uma variável é como uma caixa que guarda um valor.
+
+Exemplo:
+
+```c
+int idade;
+```
+
+Criamos uma variável chamada `idade`.
+
+Depois podemos colocar um valor nela:
+
+```c
+idade = 18;
+```
+
+Agora:
+
+```text
+idade = 18
+```
+
+## Estrutura:
+
+```c
+tipo nome_da_variavel;
+```
+
+Exemplo:
+
+```c
+int idade;
+float salario;
+char letra;
+```
+
+---
+
+# 3. TIPOS DE VARIÁVEIS
+
+## INT
+
+Usado para números inteiros.
+
+```c
+int idade;
+int numero;
+int quantidade;
+```
+
+Exemplos:
+
+```text
+18
+25
+100
+-5
+```
+
+Para receber um `int`:
+
+```c
+scanf("%d", &idade);
+```
+
+Para mostrar um `int`:
+
+```c
+printf("%d", idade);
+```
+
+---
+
+## FLOAT
+
+Usado para números com casas decimais.
+
+```c
+float salario;
+float media;
+float metade;
+```
+
+Exemplos:
+
+```text
+2.5
+10.75
+3.14
+```
+
+Para receber:
+
+```c
+scanf("%f", &salario);
+```
+
+Para mostrar:
+
+```c
+printf("%f", salario);
+```
+
+Para mostrar duas casas decimais:
+
+```c
+printf("%.2f", salario);
+```
+
+---
+
+## CHAR
+
+Usado para um único caractere.
+
+```c
+char letra;
+```
+
+Exemplo:
+
+```c
+letra = 'A';
+```
+
+Um caractere usa aspas simples:
+
+```c
+'A'
+```
+
+Para receber:
+
+```c
+scanf("%c", &letra);
+```
+
+Para mostrar:
+
+```c
+printf("%c", letra);
+```
+
+---
+
+## STRING / TEXTO
+
+C não possui um tipo chamado `string` diretamente.
+
+Para guardar um texto, usamos um vetor de `char`:
+
+```c
+char nome[50];
+```
+
+Isso cria espaço para armazenar um texto.
+
+Exemplo:
+
+```text
+Daniel
+```
+
+Para receber uma palavra:
+
+```c
+scanf("%s", nome);
+```
+
+Para ler uma linha de texto:
+
+```c
+fgets(nome, 50, stdin);
+```
+
+Para mostrar:
+
+```c
+printf("%s", nome);
+```
+
+---
+
+# 4. PRINCIPAIS FORMATOS DO SCANF E PRINTF
+
+| Tipo    | Formato |
+| ------- | ------- |
+| `int`   | `%d`    |
+| `float` | `%f`    |
+| `char`  | `%c`    |
+| texto   | `%s`    |
+
+Exemplos:
+
+```c
+int idade;
+scanf("%d", &idade);
+```
+
+```c
+float salario;
+scanf("%f", &salario);
+```
+
+```c
+char letra;
+scanf("%c", &letra);
+```
+
+```c
+char nome[50];
+scanf("%s", nome);
+```
+
+---
+
+# 5. O OPERADOR &
+
+No `scanf`, usamos o `&` para indicar o endereço da variável.
+
+Exemplo:
+
+```c
+int idade;
+
+scanf("%d", &idade);
+```
+
+O `scanf` precisa saber onde guardar o valor digitado.
+
+Por isso usamos:
+
+```c
+&idade
+```
+
+## Exemplo:
+
+```c
+float salario;
+
+scanf("%f", &salario);
+```
+
+Para strings, normalmente:
+
+```c
+char nome[50];
+
+scanf("%s", nome);
+```
+
+Não usamos `&` nesse caso.
+
+---
+
+# 6. PRINTF — MOSTRAR NA TELA
+
+O `printf` serve para mostrar informações.
+
+```c
+printf("Ola");
+```
+
+Podemos mostrar variáveis:
+
+```c
+int idade = 18;
+
+printf("%d", idade);
+```
+
+Resultado:
+
+```text
+18
+```
+
+Também podemos misturar texto e variável:
+
+```c
+printf("Sua idade e %d anos", idade);
+```
+
+Resultado:
+
+```text
+Sua idade e 18 anos
+```
+
+---
+
+# 7. SCANF — RECEBER DADOS
+
+O `scanf` recebe dados digitados pelo usuário.
+
+Exemplo:
+
+```c
+int numero;
+
+printf("Digite um numero: ");
+scanf("%d", &numero);
+```
+
+Fluxo:
+
+```text
+Usuário digita 10
+        ↓
+numero recebe 10
+        ↓
+numero = 10
+```
+
+---
+
+# 8. OPERADORES MATEMÁTICOS
+
+```text
++   soma
+-   subtração
+*   multiplicação
+/   divisão
+%   resto da divisão
+```
+
+## Soma
+
+```c
+resultado = numero1 + numero2;
+```
+
+## Subtração
+
+```c
+resultado = numero1 - numero2;
+```
+
+## Multiplicação
+
+```c
+resultado = numero1 * numero2;
+```
+
+## Divisão
+
+```c
+resultado = numero1 / numero2;
+```
+
+## Resto da divisão
+
+```c
+resto = numero % 2;
+```
+
+---
+
+# 9. DIVISÃO INTEIRA
+
+Quando dividimos dois `int`:
+
+```c
+int resultado;
+
+resultado = 5 / 2;
+```
+
+O resultado será:
+
+```text
+2
+```
+
+Porque os dois valores são inteiros.
+
+Para obter:
+
+```text
+2.5
+```
+
+podemos usar:
+
+```c
+float resultado;
+
+resultado = 5.0 / 2.0;
+```
+
+Ou:
+
+```c
+float resultado;
+
+resultado = numero / 2.0;
+```
+
+---
+
+# 10. OPERADOR %
+
+O `%` retorna o resto de uma divisão.
+
+Exemplos:
+
+```text
+10 % 2 = 0
+```
+
+```text
+7 % 2 = 1
+```
+
+Por isso usamos para verificar números pares:
+
+```c
+if (numero % 2 == 0) {
+    printf("PAR");
+}
+```
+
+A lógica é:
+
+```text
+Se o resto da divisão por 2 for 0
+→ número par
+```
+
+Caso contrário:
+
+```text
+→ número ímpar
+```
+
+---
+
+# 11. OPERADORES DE COMPARAÇÃO
+
+Usados para comparar valores.
+
+```text
+>    maior que
+<    menor que
+>=   maior ou igual
+<=   menor ou igual
+==   igual a
+!=   diferente de
+```
+
+Exemplos:
+
+```c
+idade > 18
+```
+
+Idade maior que 18.
+
+```c
+idade < 25
+```
+
+Idade menor que 25.
+
+```c
+idade >= 18
+```
+
+Idade maior ou igual a 18.
+
+```c
+idade <= 25
+```
+
+Idade menor ou igual a 25.
+
+```c
+idade == 18
+```
+
+Idade exatamente igual a 18.
+
+```c
+idade != 18
+```
+
+Idade diferente de 18.
+
+---
+
+# 12. DIFERENÇA ENTRE = E ==
+
+## `=`
+
+É atribuição.
+
+Coloca um valor dentro de uma variável.
+
+```c
+idade = 18;
+```
+
+Significa:
+
+> Coloque 18 dentro de idade.
+
+---
+
+## `==`
+
+É comparação.
+
+```c
+idade == 18
+```
+
+Significa:
+
+> A idade é igual a 18?
+
+Muito importante:
+
+```c
+idade = 18;
+```
+
+é diferente de:
+
+```c
+idade == 18;
+```
+
+---
+
+# 13. IF
+
+O `if` serve para tomar decisões.
+
+Estrutura:
+
+```c
+if (condicao) {
+    // código executado se a condição for verdadeira
+}
+```
+
+Exemplo:
+
+```c
+if (idade < 25) {
+    printf("ACEITA");
+}
+```
+
+Leia:
+
+> Se a idade for menor que 25, mostre ACEITA.
+
+---
+
+# 14. IF + ELSE
+
+Usamos quando temos duas possibilidades.
+
+Estrutura:
+
+```c
+if (condicao) {
+    // se for verdadeiro
+} else {
+    // se for falso
+}
+```
+
+Exemplo:
+
+```c
+if (numero % 2 == 0) {
+    printf("PAR");
+} else {
+    printf("IMPAR");
+}
+```
+
+Lógica:
+
+```text
+SE o resto for igual a 0
+    PAR
+
+CASO CONTRÁRIO
+    IMPAR
+```
+
+---
+
+# 15. ELSE IF
+
+Usamos quando existem várias possibilidades.
+
+Estrutura:
+
+```c
+if (condicao1) {
+
+} else if (condicao2) {
+
+} else {
+
+}
+```
+
+Exemplo:
+
+```c
+if (nota >= 7) {
+    printf("APROVADO");
+
+} else if (nota >= 5) {
+    printf("RECUPERACAO");
+
+} else {
+    printf("REPROVADO");
+}
+```
+
+Lógica:
+
+```text
+SE nota >= 7
+    APROVADO
+
+SENÃO, SE nota >= 5
+    RECUPERAÇÃO
+
+SENÃO
+    REPROVADO
+```
+
+O programa verifica de cima para baixo.
+
+Quando encontra uma condição verdadeira, executa aquele bloco e ignora os próximos.
+
+---
+
+# 16. EXEMPLO DE IF, ELSE IF E ELSE
+
+```c
+#include <stdio.h>
+
+int main() {
+
+    float nota;
+
+    printf("Digite sua nota: ");
+    scanf("%f", &nota);
+
+    if (nota >= 7) {
+        printf("APROVADO");
+
+    } else if (nota >= 5) {
+        printf("RECUPERACAO");
+
+    } else {
+        printf("REPROVADO");
+    }
+
+    return 0;
+}
+```
+
+---
+
+# 17. WHILE
+
+O `while` serve para repetir algo enquanto uma condição for verdadeira.
+
+Estrutura:
+
+```c
+while (condicao) {
+    // código repetido
+}
+```
+
+Exemplo:
+
+```c
+int contador = 1;
+
+while (contador <= 5) {
+    printf("%d\n", contador);
+
+    contador++;
+}
+```
+
+Resultado:
+
+```text
+1
+2
+3
+4
+5
+```
+
+A lógica:
+
+```text
+contador = 1
+
+1 <= 5? SIM → mostra 1
+
+contador = 2
+
+2 <= 5? SIM → mostra 2
+
+contador = 3
+
+3 <= 5? SIM → mostra 3
+
+...
+
+contador = 6
+
+6 <= 5? NÃO → para
+```
+
+---
+
+# 18. OPERADOR ++
+
+```c
+contador++;
+```
+
+Significa:
+
+```c
+contador = contador + 1;
+```
+
+Exemplo:
+
+```c
+int numero = 1;
+
+numero++;
+```
+
+Agora:
+
+```text
+numero = 2
+```
+
+Também existem:
+
+```c
+numero--;
+```
+
+Que significa:
+
+```c
+numero = numero - 1;
+```
+
+---
+
+# 19. DIFERENÇA ENTRE IF E WHILE
+
+## IF
+
+Usado para tomar uma decisão.
+
+```c
+if (idade >= 18) {
+    printf("Maior de idade");
+}
+```
+
+A condição é verificada e o bloco é executado uma vez.
+
+---
+
+## WHILE
+
+Usado para repetir.
+
+```c
+while (numero != 0) {
+    scanf("%d", &numero);
+}
+```
+
+O código continua repetindo enquanto a condição for verdadeira.
+
+Resumo:
+
+```text
+if
+→ decisão
+
+while
+→ repetição
+```
+
+---
+
+# 20. SWITCH
+
+O `switch` é usado quando temos várias opções baseadas em um valor.
+
+É muito usado em menus.
+
+Exemplo:
+
+```c
+int opcao;
+
+printf("1 - Soma\n");
+printf("2 - Subtracao\n");
+printf("3 - Sair\n");
+
+scanf("%d", &opcao);
+
+switch (opcao) {
+
+    case 1:
+        printf("Voce escolheu soma");
+        break;
+
+    case 2:
+        printf("Voce escolheu subtracao");
+        break;
+
+    case 3:
+        printf("Saindo...");
+        break;
+
+    default:
+        printf("Opcao invalida");
+}
+```
+
+---
+
+# 21. COMO FUNCIONA O SWITCH?
+
+Se:
+
+```text
+opcao = 1
+```
+
+O programa procura:
+
+```c
+case 1:
+```
+
+e executa:
+
+```c
+printf("Voce escolheu soma");
+```
+
+## CASE
+
+Representa uma possibilidade.
+
+```c
+case 1:
+```
+
+Significa:
+
+> Caso o valor seja 1.
+
+---
+
+## BREAK
+
+```c
+break;
+```
+
+Para o `switch`.
+
+Sem o `break`, o programa pode continuar executando os próximos `case`.
+
+---
+
+## DEFAULT
+
+```c
+default:
+```
+
+É executado quando nenhuma opção corresponde.
+
+Exemplo:
+
+```text
+opcao = 9
+
+Não existe case 9
+
+Então executa default
+```
+
+---
+
+# 22. QUANDO USAR IF E QUANDO USAR SWITCH?
+
+## Use IF quando:
+
+A condição envolve comparações:
+
+```c
+if (idade >= 18)
+```
+
+```c
+if (nota >= 7)
+```
+
+```c
+if (numero % 2 == 0)
+```
+
+---
+
+## Use SWITCH quando:
+
+Você tem opções específicas e fixas:
+
+```text
+1 - Soma
+2 - Subtração
+3 - Multiplicação
+4 - Sair
+```
+
+Exemplo:
+
+```c
+switch (opcao) {
+    case 1:
+    case 2:
+    case 3:
+}
+```
+
+---
+
+# 23. VARIÁVEL DE RESULTADO
+
+Nem sempre é obrigatório criar uma variável para o resultado.
+
+## Com variável:
+
+```c
+int soma;
+
+soma = numero1 + numero2;
+
+printf("%d", soma);
+```
+
+Aqui:
+
+```text
+numero1 → primeiro valor
+numero2 → segundo valor
+soma → resultado
+```
+
+---
+
+## Sem variável:
+
+```c
+printf("%d", numero1 + numero2);
+```
+
+O cálculo é feito diretamente dentro do `printf`.
+
+Use uma variável para o resultado quando:
+
+* o resultado será usado mais de uma vez;
+* o cálculo é grande;
+* você quer organizar melhor o programa;
+* o exercício pede para guardar o resultado.
+
+---
+
+# 24. COMO PENSAR AO RESOLVER UMA QUESTÃO
+
+Sempre tente dividir o exercício em quatro partes:
+
+```text
+ENTRADA
+    ↓
+PROCESSAMENTO
+    ↓
+DECISÃO
+    ↓
+SAÍDA
+```
+
+## Exemplo:
+
+> Leia dois números. Some os dois. Se a soma for maior que 10, mostre a soma. Caso contrário, mostre uma mensagem.
+
+### Entrada:
+
+```c
+int numero1;
+int numero2;
+```
+
+Receber:
+
+```c
+scanf("%d", &numero1);
+scanf("%d", &numero2);
+```
+
+### Processamento:
+
+```c
+int soma;
+
+soma = numero1 + numero2;
+```
+
+### Decisão:
+
+```c
+if (soma > 10) {
+```
+
+### Saída:
+
+```c
+printf("%d", soma);
+```
+
+Código:
+
+```c
+#include <stdio.h>
+
+int main() {
+
+    int numero1;
+    int numero2;
+    int soma;
+
+    printf("Digite o primeiro numero: ");
+    scanf("%d", &numero1);
+
+    printf("Digite o segundo numero: ");
+    scanf("%d", &numero2);
+
+    soma = numero1 + numero2;
+
+    if (soma > 10) {
+        printf("A soma e: %d", soma);
+
+    } else {
+        printf("A soma nao e maior que 10");
+    }
+
+    return 0;
+}
+```
+
+---
+
+# 25. MODELO MENTAL PARA QUALQUER EXERCÍCIO
+
+Quando ler uma questão, pergunte:
+
+## 1. O que entra?
+
+Exemplo:
+
+```text
+Um número?
+Dois números?
+Uma idade?
+Uma nota?
+Um nome?
+```
+
+---
+
+## 2. Qual tipo de variável usar?
+
+```text
+Número inteiro → int
+
+Número decimal → float
+
+Um caractere → char
+
+Texto → char nome[50]
+```
+
+---
+
+## 3. O que preciso fazer com os dados?
+
+```text
+Somar?
+Dividir?
+Calcular média?
+Verificar o resto?
+```
+
+---
+
+## 4. Preciso tomar uma decisão?
+
+Se aparecer:
+
+```text
+se
+caso
+caso contrário
+maior que
+menor que
+igual
+```
+
+provavelmente você usará:
+
+```c
+if
+else if
+else
+```
+
+---
+
+## 5. Preciso repetir?
+
+Se o enunciado disser:
+
+```text
+enquanto
+até que
+repetir
+continue
+```
+
+provavelmente você usará:
+
+```c
+while
+```
+
+---
+
+## 6. Existem opções fixas?
+
+Se o exercício pedir um menu:
+
+```text
+1 - Soma
+2 - Subtração
+3 - Multiplicação
+```
+
+provavelmente você usará:
+
+```c
+switch
+case
+break
+default
+```
+
+---
+
+# RESUMO GERAL
+
+```text
+int
+→ números inteiros
+
+float
+→ números decimais
+
+char
+→ um caractere
+
+char nome[50]
+→ texto
+
+printf
+→ mostra na tela
+
+scanf
+→ recebe dados do teclado
+
+fgets
+→ lê texto/linhas
+
++
+→ soma
+
+-
+→ subtração
+
+*
+→ multiplicação
+
+/
+→ divisão
+
+%
+→ resto da divisão
+
+if
+→ se / decisão
+
+else if
+→ senão, se
+
+else
+→ caso contrário
+
+while
+→ repetição
+
+switch
+→ escolha entre opções
+
+case
+→ cada opção do switch
+
+break
+→ interrompe o switch ou loop
+
+default
+→ caso nenhuma opção seja válida
+
+return 0
+→ finaliza o programa corretamente
+```
+
+# PADRÃO PRINCIPAL
+
+```text
+O que entra?
+      ↓
+Qual é o tipo da variável?
+      ↓
+O que faço com os dados?
+      ↓
+Preciso tomar uma decisão?
+      ↓
+Preciso repetir?
+      ↓
+O que devo mostrar?
+```
+
+A programação começa, principalmente, com a capacidade de transformar o enunciado em uma sequência lógica:
+
+```text
+ENTRADA → PROCESSAMENTO → DECISÃO → SAÍDA
+```
