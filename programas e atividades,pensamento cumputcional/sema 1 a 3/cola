@@ -1,0 +1,548 @@
+IF, ELSE IF E ELSE EM C
+
+1. O que é o IF?
+
+O "if" é usado para tomar uma decisão.
+
+A estrutura básica é:
+
+if (condicao) {
+    // código executado se a condição for verdadeira
+}
+
+Exemplo:
+
+if (idade < 25) {
+    printf("ACEITA");
+}
+
+Leia:
+
+«Se a idade for menor que 25, mostre "ACEITA".»
+
+---
+
+2. O que é o ELSE?
+
+O "else" significa:
+
+«Caso contrário.»
+
+Ele é usado quando temos duas possibilidades.
+
+if (condicao) {
+    // se a condição for verdadeira
+} else {
+    // se a condição for falsa
+}
+
+Exemplo:
+
+if (idade < 25) {
+    printf("ACEITA");
+} else {
+    printf("NAO ACEITA");
+}
+
+A lógica é:
+
+SE idade for menor que 25
+    ACEITA
+
+CASO CONTRÁRIO
+    NAO ACEITA
+
+---
+
+3. O que é o ELSE IF?
+
+O "else if" significa:
+
+«Senão, se...»
+
+Ele é usado quando existem mais de duas possibilidades.
+
+A estrutura é:
+
+if (condicao1) {
+
+} else if (condicao2) {
+
+} else {
+
+}
+
+A lógica é:
+
+SE a primeira condição for verdadeira
+    faça a primeira coisa
+
+SENÃO, SE a segunda condição for verdadeira
+    faça a segunda coisa
+
+SENÃO
+    faça outra coisa
+
+---
+
+4. Exemplo com notas
+
+Imagine:
+
+- Nota maior ou igual a 7 → aprovado
+- Nota maior ou igual a 5 → recuperação
+- Nota menor que 5 → reprovado
+
+Código:
+
+if (nota >= 7) {
+    printf("APROVADO");
+} else if (nota >= 5) {
+    printf("RECUPERACAO");
+} else {
+    printf("REPROVADO");
+}
+
+Como o programa verifica?
+
+Ele verifica de cima para baixo.
+
+Se:
+
+nota = 8
+
+Primeiro:
+
+8 >= 7?
+
+Sim.
+
+Resultado:
+
+APROVADO
+
+O programa não precisa verificar o "else if" nem o "else".
+
+---
+
+Se:
+
+nota = 6
+
+Primeiro:
+
+6 >= 7?
+
+Não.
+
+Depois:
+
+6 >= 5?
+
+Sim.
+
+Resultado:
+
+RECUPERACAO
+
+---
+
+Se:
+
+nota = 3
+
+Primeiro:
+
+3 >= 7?
+
+Não.
+
+Depois:
+
+3 >= 5?
+
+Não.
+
+Então chega no:
+
+else
+
+Resultado:
+
+REPROVADO
+
+---
+
+5. Exemplo completo
+
+#include <stdio.h>
+
+int main() {
+
+    float nota;
+
+    printf("Digite sua nota: ");
+    scanf("%f", &nota);
+
+    if (nota >= 7) {
+        printf("APROVADO\n");
+
+    } else if (nota >= 5) {
+        printf("RECUPERACAO\n");
+
+    } else {
+        printf("REPROVADO\n");
+    }
+
+    return 0;
+}
+
+---
+
+6. Tradução dos comandos
+
+if
+
+Significa:
+
+«Se»
+
+else if
+
+Significa:
+
+«Senão, se...»
+
+else
+
+Significa:
+
+«Caso contrário»
+
+Exemplo:
+
+if (nota >= 7) {
+    printf("APROVADO");
+} else if (nota >= 5) {
+    printf("RECUPERACAO");
+} else {
+    printf("REPROVADO");
+}
+
+Pode ser lido assim:
+
+«Se a nota for maior ou igual a 7, aprovado.
+
+Senão, se a nota for maior ou igual a 5, recuperação.
+
+Caso contrário, reprovado.»
+
+---
+
+7. Quantos ELSE IF posso usar?
+
+Você pode usar vários:
+
+if (condicao1) {
+
+} else if (condicao2) {
+
+} else if (condicao3) {
+
+} else if (condicao4) {
+
+} else {
+
+}
+
+Exemplo:
+
+if (idade < 12) {
+    printf("CRIANÇA");
+
+} else if (idade < 18) {
+    printf("ADOLESCENTE");
+
+} else if (idade < 60) {
+    printf("ADULTO");
+
+} else {
+    printf("IDOSO");
+}
+
+A lógica:
+
+SE idade < 12
+    CRIANCA
+
+SENAO SE idade < 18
+    ADOLESCENTE
+
+SENAO SE idade < 60
+    ADULTO
+
+SENAO
+    IDOSO
+
+---
+
+8. Diferença entre IF separado e ELSE IF
+
+IF separado
+
+if (idade >= 18) {
+    printf("Maior de idade");
+}
+
+if (idade >= 21) {
+    printf("Pode ter 21 anos ou mais");
+}
+
+Aqui, o programa verifica os dois "if" separadamente.
+
+Os dois podem ser executados.
+
+---
+
+IF + ELSE IF
+
+if (idade >= 18) {
+    printf("Maior de idade");
+
+} else if (idade >= 21) {
+    printf("21 anos ou mais");
+}
+
+Aqui existe uma sequência.
+
+Quando uma condição é verdadeira, o programa executa aquele bloco e ignora os próximos "else if".
+
+---
+
+9. Operadores usados nas condições
+
+>       maior que
+
+<       menor que
+
+>=      maior ou igual
+
+<=      menor ou igual
+
+==      igual a
+
+!=      diferente de
+
+Exemplos:
+
+if (numero > 10)
+
+O número é maior que 10.
+
+if (numero < 10)
+
+O número é menor que 10.
+
+if (numero >= 10)
+
+O número é maior ou igual a 10.
+
+if (numero <= 10)
+
+O número é menor ou igual a 10.
+
+if (numero == 10)
+
+O número é exatamente igual a 10.
+
+if (numero != 10)
+
+O número é diferente de 10.
+
+---
+
+10. ATENÇÃO: = e == são diferentes
+
+Um sinal de igual:
+
+idade = 18;
+
+Significa:
+
+«Coloque o valor 18 dentro da variável idade.»
+
+É uma atribuição.
+
+---
+
+Dois sinais de igual:
+
+idade == 18
+
+Significa:
+
+«A idade é igual a 18?»
+
+É uma comparação.
+
+Exemplo:
+
+if (idade == 18) {
+    printf("A idade e exatamente 18");
+}
+
+---
+
+11. O padrão geral para resolver exercícios
+
+Quando você ler:
+
+«Se acontecer alguma coisa, faça X. Caso contrário, faça Y.»
+
+Use:
+
+if (condicao) {
+    // faça X
+} else {
+    // faça Y
+}
+
+Quando o exercício tiver mais possibilidades:
+
+if (condicao1) {
+    // primeira possibilidade
+
+} else if (condicao2) {
+    // segunda possibilidade
+
+} else {
+    // qualquer outro caso
+}
+
+---
+
+12. Como interpretar uma questão
+
+Exemplo:
+
+«Leia uma nota. Se a nota for maior ou igual a 7, mostre APROVADO. Se for maior ou igual a 5, mostre RECUPERAÇÃO. Caso contrário, mostre REPROVADO.»
+
+Passo 1: O que preciso receber?
+
+Uma nota.
+
+float nota;
+
+Passo 2: Como receber?
+
+printf("Digite a nota: ");
+scanf("%f", &nota);
+
+Passo 3: Qual é a primeira condição?
+
+nota >= 7
+
+Então:
+
+if (nota >= 7) {
+
+Passo 4: Qual é a segunda condição?
+
+nota >= 5
+
+Então:
+
+else if (nota >= 5) {
+
+Passo 5: Qual é o caso contrário?
+
+else {
+
+Resultado final:
+
+#include <stdio.h>
+
+int main() {
+
+    float nota;
+
+    printf("Digite a nota: ");
+    scanf("%f", &nota);
+
+    if (nota >= 7) {
+        printf("APROVADO");
+
+    } else if (nota >= 5) {
+        printf("RECUPERACAO");
+
+    } else {
+        printf("REPROVADO");
+    }
+
+    return 0;
+}
+
+---
+
+RESUMO FINAL
+
+if
+
+= Se
+
+else if
+
+= Senão, se
+
+else
+
+= Caso contrário
+
+Estrutura:
+
+if (condicao1) {
+
+} else if (condicao2) {
+
+} else {
+
+}
+
+Pense sempre:
+
+1. Qual é a primeira possibilidade?
+2. Qual é a segunda possibilidade?
+3. Existe uma terceira possibilidade?
+4. O que acontece caso nenhuma condição seja verdadeira?
+
+O programa normalmente segue este caminho:
+
+ENTRADA
+   ↓
+PROCESSAMENTO
+   ↓
+IF
+   ↓
+ELSE IF
+   ↓
+ELSE
+   ↓
+SAÍDA
+
+Exemplo:
+
+Usuário digita uma nota
+        ↓
+Programa verifica a nota
+        ↓
+IF: nota >= 7?
+        ↓
+Se não:
+        ↓
+ELSE IF: nota >= 5?
+        ↓
+Se não:
+        ↓
+ELSE
+        ↓
+Mostra o resultado
