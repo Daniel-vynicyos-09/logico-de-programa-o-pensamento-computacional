@@ -85,3 +85,119 @@ int main() {
 
     return 0;
 }
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Busca em Matriz 8x8</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background:#f0f0f0;
+        text-align:center;
+    }
+
+    table{
+        margin:auto;
+        border-collapse:collapse;
+    }
+
+    td{
+        padding:3px;
+    }
+
+    input[type=number]{
+        width:45px;
+        height:30px;
+        text-align:center;
+    }
+
+    button{
+        margin:10px;
+        padding:10px 20px;
+        cursor:pointer;
+    }
+
+    #resultado{
+        font-size:18px;
+        font-weight:bold;
+        margin-top:20px;
+    }
+</style>
+
+</head>
+<body>
+
+<h2>Matriz 8x8</h2>
+
+<table id="matriz"></table>
+
+<br>
+
+<input type="number" id="valor" placeholder="Valor">
+
+<button onclick="procurar()">Procurar</button>
+
+<p id="resultado"></p>
+
+<script>
+
+let tabela = document.getElementById("matriz");
+
+// Cria a matriz 8x8
+for(let i=0;i<8;i++){
+
+    let linha = tabela.insertRow();
+
+    for(let j=0;j<8;j++){
+
+        let celula = linha.insertCell();
+
+        let caixa = document.createElement("input");
+        caixa.type = "number";
+        caixa.id = "c"+i+"_"+j;
+
+        celula.appendChild(caixa);
+    }
+}
+
+function procurar(){
+
+    let x = Number(document.getElementById("valor").value);
+
+    let encontrou = false;
+    let linha = -1;
+    let coluna = -1;
+
+    for(let i=0;i<8;i++){
+
+        for(let j=0;j<8;j++){
+
+            let valor = Number(document.getElementById("c"+i+"_"+j).value);
+
+            if(valor == x){
+                encontrou = true;
+                linha = i;
+                coluna = j;
+            }
+
+        }
+
+    }
+
+    if(encontrou)
+        document.getElementById("resultado").innerHTML =
+        x + " foi encontrado na posição [" + linha + "][" + coluna + "]";
+    else
+        document.getElementById("resultado").innerHTML =
+        "O valor " + x + " não está na matriz.";
+
+}
+
+</script>
+
+</body>
+</html>
